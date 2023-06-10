@@ -1,7 +1,7 @@
 {
-  "name": "mastodon-link",
+  "name": "kbin-link",
   "version": "1.2.1",
-  "description": "Find it annoying to copy paste `@indiealexh@tny.social` to look at someones Mastodon profile or follow them? This extension is for you.",
+  "description": "Find it annoying to copy paste `!apple@lemmy.ml` to look at that community? This extension is for you.",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.js"

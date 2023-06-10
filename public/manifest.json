@@ -1,18 +1,16 @@
 {
-  "name": "Mastodon Link",
+  "name": "Kbin Link",
   "version": "1.2.1",
   "author": "Alexander Haslam <@indiealexh@tny.social>",
   "manifest_version": 3,
-  "description": "Extension to make it easy to visit mastodon profiles from your instance",
+  "description": "Extension to make it easy to visit Lemmy communities from kbin.social",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content_script.js"]
     }
   ],
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
