@@ -1,8 +1,8 @@
-# Masrly - Mastodon Linker Chrome Extension
+# Kbin Linker Extension
 
-Find it annoying to copy paste `@indiealexh@tny.social` to look at someones Mastodon profile or follow them? This extension is for you.
+Find it annoying to copy paste `!memes@beehaw.org` to look at a Lemmy community? This extension is for you.
 
-This extension looks for mastodon style usernames and replaces them to direct you to seeing that profile via your server.
+This extension looks for Lemmy style communities and replaces them to direct you to seeing that community on your kbin instance.
 
 ## Build
 
@@ -13,11 +13,10 @@ This extension looks for mastodon style usernames and replaces them to direct yo
 ## Installation
 
 ### Chrome
-- Install it from [the Chrome Web Store](https://chrome.google.com/webstore/detail/mastodon-link/nlfdgcdfjnobjocicnddjghdbmgglame)
-- Git clone this repo and [load it unpacked](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
+- Pending :(
 
 ### Firefox
-- Install it from [the Firefox Addon Site](https://addons.mozilla.org/en-US/firefox/addon/mastodon-link/)
+- Pending :(
 
 ## Setup
 
