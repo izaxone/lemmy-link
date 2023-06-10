@@ -1,74 +1,102 @@
 let instanceUrl = "";
 
-const mastodonRegex = new RegExp(`@[a-zA-Z]{1,30}@([a-zA-Z0-9\\-ßàÁâãóôþüúðæåïçèõöÿýòäœêëìíøùîûñé]{1,63}\\.){1,127}[a-zA-Z]{2,63}`, `gm`);
-const looseMastodonRegex = new RegExp(`[a-zA-Z]{1,30}@([a-zA-Z0-9\\-ßàÁâãóôþüúðæåïçèõöÿýòäœêëìíøùîûñé]{1,63}\\.){1,127}[a-zA-Z]{2,63}`, `gm`);
+const lemmyCommunityRegex = new RegExp(
+  `![a-zA-Z]{1,30}@([a-zA-Z0-9\\-ßàÁâãóôþüúðæåïçèõöÿýòäœêëìíøùîûñé]{1,63}\\.){1,127}[a-zA-Z]{2,63}`,
+  `gm`
+);
+const looselemmyCommunityRegex = new RegExp(
+  `[a-zA-Z]{1,30}@([a-zA-Z0-9\\-ßàÁâãóôþüúðæåïçèõöÿýòäœêëìíøùîûñé]{1,63}\\.){1,127}[a-zA-Z]{2,63}`,
+  `gm`
+);
+
 //
 const observer = new MutationObserver((mutationList, observer) => {
-    for (let mutation of mutationList) {
-        if (mutation.target.parentElement !== null) {
-            walk(mutation.target.parentElement);
-        }
+  for (let mutation of mutationList) {
+    if (mutation.target.parentElement !== null) {
+      walk(mutation.target.parentElement);
     }
+  }
 });
-const observerConfig = {attributes: false, childList: true, subtree: true};
+const observerConfig = { attributes: false, childList: true, subtree: true };
 
 function walk(node: Node) {
-    // I stole this function from here:
-    // https://github.com/panicsteve/cloud-to-butt/blob/master/Source/content_script.js
+  // I stole this function from here:
+  // https://github.com/panicsteve/cloud-to-butt/blob/master/Source/content_script.js
 
-    var child, next;
-    if (node instanceof HTMLElement) {
-        var tagName = node.tagName ? node.tagName.toLowerCase() : "";
-        if (tagName == 'input' || tagName == 'textarea') {
-            return;
-        }
-        if (node.classList && node.classList.contains('masrly_linker')) {
-            return;
-        }
+  var child, next;
+  if (node instanceof HTMLElement) {
+    var tagName = node.tagName ? node.tagName.toLowerCase() : "";
+    if (tagName == "input" || tagName == "textarea") {
+      return;
     }
-    switch (node.nodeType) {
-        case Node.ELEMENT_NODE:  // Element
-        case Node.DOCUMENT_NODE:  // Document
-        case Node.DOCUMENT_FRAGMENT_NODE: // Document fragment
-            child = node.firstChild;
-            while (child) {
-                next = child.nextSibling;
-                walk(child);
-                child = next;
-            }
-            break;
+    if (node.classList && node.classList.contains("masrly_linker")) {
+      return;
+    }
+  }
+  switch (node.nodeType) {
+    case Node.ELEMENT_NODE: // Element
+    case Node.DOCUMENT_NODE: // Document
+    case Node.DOCUMENT_FRAGMENT_NODE: // Document fragment
+      child = node.firstChild;
+      while (child) {
+        next = child.nextSibling;
+        walk(child);
+        child = next;
+      }
+      break;
 
-        case Node.TEXT_NODE: // Text node
-            handleText(node);
-            break;
-    }
+    case Node.TEXT_NODE: // Text node
+      handleText(node);
+      break;
+  }
 }
 
 function handleText(textNode: Node) {
-    // Check for text node containing a username with an @ OR a text node contining a username without an @ but where the parent nodes text does (This covers instances where there is multiple text nodes for a single string
-    if (textNode.nodeValue?.match(mastodonRegex) || (textNode.nodeValue?.match(looseMastodonRegex) && textNode.parentElement?.innerText.match(mastodonRegex))) {
-        textNode.parentElement?.classList.add("masrly_linker");
-        const matches = textNode.parentElement?.innerHTML.match(mastodonRegex) ?? [];
-        if (textNode.parentElement) {
-            for (let match of matches) {
-                textNode.parentElement.innerHTML = textNode.parentElement?.innerHTML.replace(mastodonRegex, (match) => `<a href="https://${instanceUrl}/${match.includes(instanceUrl) ? match.replace("@" + instanceUrl, "") : match}"><img style="height: 0.9em;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAADJUlEQVRIiaWWT2hcVRTGf9+d6SSpSQptBamKIhYm86YmtLWI2FFEhNZuDVQpBUEXLhRKY4Kr2UmbafcqiCBFTJdiF/4ngmgpVTMzicESTLVSFFsbrZOOvntc5M2bN9OkPMy3uvec737fOffed3miG2Vz+cHq3oxR8qYRiXsxtgEbgcGItQRcB7ss6UfMvpVpuna9OE1ZPimn5KQ4WX3Mi7eBe24yTgNx0XkO18Z2fH6TQTBZf9zkPwB6/5d4G8sy91R9LPg0NthVPrex0Z/7AbRtneJEopeuuT+3/3zk4YYDaAzkDnWLm/gQ70tybovHdgvei3PYu8jtlHNb8L4k+KhjLdy5yfcfAsgCmOlAx2HA9Nzdc/sZHQ2j+RXMDhZO1B3A3NEdzyS4XzA1tS9YHPrExKNtEx0A3shGLQ13tCiVGR0NMVPhZO1ZefXVT59+yzLFl33TiampTLBYeM6cNWaPFE8hhZqslg0+S8iMxB0Itloi0/hn+TxAUKkeNOkdkxEs5jfXxwrHAIYqtVdMdgyDwomqzcKp5Z7e87nmstG+OLcDuGjPehL6zYWJ3deiVva0z0RPtMYOi8fIPQRw4aXtS8CNOAwbYgNBsoF47LFsIjyQ4PS3w0lOB5rJDsJEwlalp0CyUINGbLAe0VvgCkSHjAhbFlrTTMWgUj0XVZNfjWEQv0OC39oGxhIrjxmmNbu5zWBX2vINFpIGVxF3RONsUJl5AcCjIIVWocW3lh4grNY2EJeAoSiXM/T6SjgVSoZKXbGfwuaGN6F1yGI2nVYq1PSve+T7V4d+jw2EfbMaU53X91YwoGbo+b6BGzvrE8HFViILkPF2JpRCg0xylTeedhlXtTAMkO4HNgvLInKG/sBz1TkWnPdnZ8aGf12jyBUUKrUzYPs6k3a8fvSB8ZRdrIrWh4Z3frx7Swy9WDj+3d71GHRclKAyM2HotS6OB85K9hWeyx5556zXzN0H/sEwzD05P57/JZXBikntsGEVYGuaCsPQ5+fHh+dTGwDcdfLLvk02uB/ze7w0IrMiqA/Rg/EXsIj0tQvt/drfxY+7f1WS+A8OnS5q4RlzlAAAAABJRU5ErkJggg==" alt="${match}"></a>&nbsp;${match}`);
-            }
-        }
+  // Check for text node containing a username with an @ OR a text node contining a username without an @ but where the parent nodes text does (This covers instances where there is multiple text nodes for a single string
+  if (
+    textNode.nodeValue?.match(lemmyCommunityRegex) ||
+    (textNode.nodeValue?.match(looselemmyCommunityRegex) &&
+      textNode.parentElement?.innerText.match(lemmyCommunityRegex))
+  ) {
+    textNode.parentElement?.classList.add("masrly_linker");
+    const matches =
+      textNode.parentElement?.innerHTML.match(lemmyCommunityRegex) ?? [];
+    if (textNode.parentElement) {
+      for (let match of matches) {
+        const baseUrl = `https://${instanceUrl}/`;
+        const replacement = match.includes(instanceUrl)
+          ? match.replace(`@${instanceUrl}`, "")
+          : match;
+        const linkElement = `<a href="${baseUrl}m/${replacement}">
+                                      <img style="height: 0.9em;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAKLUExURQAAALtZ9L5b78dm5MFf7MBX+LpV+bVS+rZS+LdS+c5u2rdV9cJg6sNj6MZm5cpp4s9x2slo49J219R50p1F/NqBzNB+05lE/N2Fyf8A/5RC/OCJxY8//eeUuueOw6hD/Ik9/OiTvOSLw71b8rpW9LhU9rVQ+rVQ+r5b771a8bZR+bVQ+sFg68Be7blV9rdT98tn38Vk57xZ8bpY88FX+L9W+L1V+bpU+blT+cxt3shp479e7b5W+LRR+a5N/MBh6ctt38Rk6MNj6blT+a9P+qxN+r5h6cdo48Zm5bRR+bJQ+stt38hi6K9P+q1O+s9z2s5x26pN+qhM+tN31dJ216hN/KNJ+9Z70dR5055H+9qAzZlE/JdE/N6Gx92EyZVC/JJB/eKKw+CJxZA//Yw+/uWPv4Y7/7Bi4OqWuOmUuuiTvLdT97ZR+bVQ+rtY8rpX9LlV9bhT97ZS+L9d7r1b8Lxa8btY87pW9MNj6MJh6sFg68Be7b5c7sdn5MVm5sRk58Ni6cFf7LxV+blT+bdS+cps4Mlq4sho48Zn5cVl5rRR+bJQ+s9y2s1w3Mxu3ctt38pr4K9P+q1O+qpM+qpO+chs3tN31tF12NBz2c5x28xu3qtN+qhL+6VK+65T89J41NZ70tR51NN31dJ219F02KZK+6NJ+6BH/Lhg59qBzNl/zth9z9Z80dV60qFI+55H+51H+8hx2d6Gx9yDytuCy9qAzdd90JxG/JlE/KFN9diByuGKxOCIxt2FyduBzJNB/a5b6OSOwOOMweKLw+GJxN+HxpBA/cNx1uqVueiSvOaRveWPv+OMwpVH9tuJwu2ZteuXuOmUu+eSvOaQvu6csvCdsu6btOyYt////5LEvacAAABrdFJOUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4P3+4cl3/17XPzpOgGbvw9cjpJ+GRXSg8+VRXT19UWn/ff60hhv/JoBPuz7WxnQ4SYEp7AHd3FI9u02IuDEDwm1g239/tIus/OF0wAAAAFiS0dE2AANR64AAAAHdElNRQfnBgoDJCWfwh/mAAAAAW9yTlQBz6J3mgAAALVJREFUGNNNyKFOQ0EQRuE5O//u3KFBlMALEIKtwOG5lbwcHoXiBVpBQKEICcFThQVTmmJIRVdw3PkwMzPjFEawJepQuQJQB0fUDhWAc+YAW6EZwHtSgd/DfNMwwvICBiAXgaI0AkaATQO15znXALA+Fkgc0Jvc16fyH9aifElk/58TgZVHz8zM/Bty8Ae34uUuIlqbxtGt3E0uAoDNRPinqexhm4EWbubT1dnrpWRx8+If/m07tcceicDkwY8AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDYtMTBUMDM6MzY6MzMrMDA6MDC5z2wUAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA2LTEwVDAzOjM2OjMzKzAwOjAwyJLUqAAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wNi0xMFQwMzozNjozNyswMDowMGvI0WQAAAAASUVORK5CYII=" alt="${match}">
+                                    </a>`;
+        const newText = `${linkElement}&nbsp;${match}`;
+
+        textNode.parentElement.innerHTML =
+          textNode.parentElement?.innerHTML.replace(
+            lemmyCommunityRegex,
+            () => newText
+          );
+      }
     }
+  }
 }
 
 // @ts-ignore
 function restore_options(): void {
-    chrome.storage.sync.get({
-        instance: 'tny.social'
-    }, function (items) {
+    chrome.storage.sync.get(
+      {
+        instance: "kbin.social",
+      },
+      function (items) {
         instanceUrl = items.instance;
         // Don't run on own server
         if (!location.href.startsWith(`${location.protocol}//${instanceUrl}`)) {
-            walk(document.body);
-            observer.observe(document.body, observerConfig);
+          walk(document.body);
+          observer.observe(document.body, observerConfig);
         }
-    });
+      }
+    );
 }
 
 restore_options();

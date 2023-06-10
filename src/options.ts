@@ -2,7 +2,9 @@ const instanceInput = document.getElementById("instance") as HTMLInputElement;
 
 instanceInput!.addEventListener("input", (event) => {
     if (instanceInput.validity.patternMismatch) {
-        instanceInput.setCustomValidity("Please enter your instance's hostname e.g. tny.social");
+        instanceInput.setCustomValidity(
+          "Please enter your instance's hostname e.g. kbin.social"
+        );
         instanceInput.reportValidity();
     } else {
         instanceInput.setCustomValidity("");
@@ -31,7 +33,7 @@ function save_options() {
 function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
-        instance: 'tny.social'
+        instance: 'kbin.social'
     }, function (items) {
         (document.getElementById('instance') as HTMLInputElement).value = items.instance;
     });
