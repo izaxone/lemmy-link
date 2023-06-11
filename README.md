@@ -30,9 +30,9 @@ Enter your instances hostname and click save:
 
 <img width="359" alt="mastodon-link-options-setup" src="https://user-images.githubusercontent.com/1066212/203490871-566cd1fc-a4b4-4ef6-a7c8-1f1c4769c04d.png">
 
-Find a mastodon username and enjoy the convenient icon link! 
+Find a Lemmy community and enjoy the convenient icon link! 
 
-![-indiealexh-tny-social-indiealexh-Twitter](https://user-images.githubusercontent.com/1066212/203491063-f5025516-e172-4838-a11a-55a5e5a1707d.png)
+![-indiealexh-tny-social-indiealexh-Twitter](https://imgur.com/a/qJWTcZ9)
 
 ## License
 
