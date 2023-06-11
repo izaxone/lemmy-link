@@ -31,7 +31,9 @@ Enter your instances hostname and click save:
 <img width="359" alt="mastodon-link-options-setup" src="https://user-images.githubusercontent.com/1066212/203490871-566cd1fc-a4b4-4ef6-a7c8-1f1c4769c04d.png">
 
 Find a Lemmy community and enjoy the convenient icon link! 
-![Image](https://imgur.com/a/qJWTcZ9)
+
+![Image](https://github.com/driccio98/kbin-link/blob/1d0ec18be808b5a7c02ae7cae5c6ec16bee8c98f/.github/images/image1.png)
+
 ## License
 
 This project is released under the Unlicense license. See the enclosed LICENSE for details.
