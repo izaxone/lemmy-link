@@ -18,7 +18,7 @@ This extension is forked from https://github.com/masrly/mastodon-link, I just ma
 - Pending :(
 
 ### Firefox
-- Pending :(
+- https://addons.mozilla.org/en-US/firefox/addon/kbin-link/
 
 ## Setup
 
