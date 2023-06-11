@@ -80,17 +80,22 @@ function processTextNode(
   regex: RegExp,
   type: "mention" | "url"
 ) {
-  textNode.parentElement?.classList.add("kbin_linker");
-  const matches = textNode.parentElement?.innerHTML.match(regex) ?? [];
-  if (textNode.parentElement) {
-    for (let match of matches) {
-      const linkElement = convertToKbinUrl(match, type);
-      const newText = `${linkElement}&nbsp;${match}`;
-
-      textNode.parentElement.innerHTML =
-        textNode.parentElement?.innerHTML.replace(regex, () => newText);
-    }
+  const parentElement = textNode.parentElement;
+  if (!parentElement) {
+    return;
   }
+
+  parentElement.classList.add("kbin_linker");
+  const matches = parentElement.innerHTML.match(regex) || [];
+
+  let newHTML = parentElement.innerHTML;
+  for (let match of matches) {
+    const linkElement = convertToKbinUrl(match, type);
+    const newText = `${linkElement}&nbsp;${match}`;
+    newHTML = newHTML.replace(regex, () => newText);
+  }
+
+  parentElement.innerHTML = newHTML;
 }
 
 //mention !community@instance.domain
