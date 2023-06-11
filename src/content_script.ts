@@ -33,7 +33,7 @@ function walk(node: Node) {
     if (tagName == "input" || tagName == "textarea") {
       return;
     }
-    if (node.classList && node.classList.contains("masrly_linker")) {
+    if (node.classList && node.classList.contains("kbin_linker")) {
       return;
     }
   }
@@ -103,7 +103,7 @@ function convertToKbinUrl(input: string, type: "mention" | "url") {
       const replacement = input.includes(instanceUrl)
         ? input.replace(`@${instanceUrl}`, "")
         : input.replace("!", "");
-      resultUrl = `${baseUrl}m/${replacement}}`;
+      resultUrl = `${baseUrl}m/${replacement}`;
       break;
     case "url":
       resultUrl = input.replace(

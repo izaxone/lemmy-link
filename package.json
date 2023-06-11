@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/masrly/mastodon-link.git"
+    "url": "git+https://github.com/driccio98/kbin-link.git"
   },
   "keywords": [],
-  "author": "Alexander Haslam <alexander.haslam@reincarnadigital.com>",
+  "author": "Daniel Riccio <ricciodaniel98@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/masrly/mastodon-link/issues"
+    "url": "https://github.com/driccio98/kbin-link/issues"
   },
-  "homepage": "https://github.com/masrly/mastodon-link#readme",
+  "homepage": "https://github.com/driccio98/kbin-link#readme",
   "devDependencies": {
     "@types/chrome": "^0.0.203",
     "copy-webpack-plugin": "^11.0.0",
