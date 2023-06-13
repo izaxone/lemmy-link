@@ -32,9 +32,9 @@ Enter your instances hostname and click save:
 
 Find a Lemmy community and enjoy the convenient icon link! 
 
-![Image](lemmy-link-icon.PNG)
+![Image](lemmy-link-icon-chrome.jpg)
 
-![Image](lemmy-link-icon-2.PNG)
+
 
 ## License
 
