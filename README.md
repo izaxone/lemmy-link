@@ -15,10 +15,10 @@ This extension is forked from https://github.com/driccio98/kbin-link which is fo
 ## Installation
 
 ### Chrome
-- Pending :(
+- Pending
 
 ### Firefox
-- tbc
+- Pending
 
 ## Setup
 
