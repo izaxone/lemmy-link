@@ -31,7 +31,7 @@ function save_options() {
 }
 
 // Restores select box and checkbox state using the preferences
-// stored in browser.storage.
+// stored in chrome.storage.
 // @ts-ignore
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.

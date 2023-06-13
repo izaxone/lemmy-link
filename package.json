@@ -19,7 +19,6 @@
   "homepage": "https://github.com/FackJox/lemmy-link#readme",
   "devDependencies": {
     "@types/chrome": "^0.0.203",
-    "@types/firefox": "^0.0.31",
     "copy-webpack-plugin": "^11.0.0",
     "ts-loader": "^9.4.1",
     "typescript": "^4.9.3",
