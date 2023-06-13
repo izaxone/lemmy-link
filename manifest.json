@@ -2,12 +2,12 @@
   "name": "lemmy Link",
   "version": "1.3.3",
   "author": "fcuks <@fcuks@mograph.social >",
-  "manifest_version": 4,
+  "manifest_version": 3,
   "description": "Extension to make it easy to interact with different Lemmy communities",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["src/content_script.js"]
+      "js": ["src/content_script.ts"]
     }
   ],
   "permissions": ["storage"],
