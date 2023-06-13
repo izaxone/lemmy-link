@@ -2,7 +2,7 @@
 
 Find it annoying to copy paste `!memes@beehaw.org` to look at a Lemmy community? This extension is for you.
 
-This extension looks for Lemmy style communities and replaces them to direct you to seeing that community on your kbin instance.
+This extension looks for Lemmy style communities and replaces them to direct you to seeing that community on your lemmy instance.
 
 This extension is forked from https://github.com/driccio98/kbin-link which is forked from https://github.com/masrly/mastodon-link, I just made small changes on the small changes
 

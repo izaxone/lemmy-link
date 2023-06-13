@@ -33,7 +33,7 @@ function walk(node: Node) {
     if (tagName == "input" || tagName == "textarea") {
       return;
     }
-    if (node.classList && node.classList.contains("kbin_linker")) {
+    if (node.classList && node.classList.contains("lemmy_linker")) {
       return;
     }
   }
@@ -85,12 +85,12 @@ function processTextNode(
     return;
   }
 
-  parentElement.classList.add("kbin_linker");
+  parentElement.classList.add("lemmy_linker");
   const matches = parentElement.innerHTML.match(regex) || [];
 
   let newHTML = parentElement.innerHTML;
   for (let match of matches) {
-    const linkElement = convertToKbinUrl(match, type);
+    const linkElement = convertToLemmyUrl(match, type);
     const newText = `${linkElement}&nbsp;${match}`;
     newHTML = newHTML.replace(regex, () => newText);
   }
@@ -100,7 +100,7 @@ function processTextNode(
 
 //mention !community@instance.domain
 //url https://lemmy.ml/c/memes
-function convertToKbinUrl(input: string, type: "mention" | "url") {
+function convertToLemmyUrl(input: string, type: "mention" | "url") {
   const baseUrl = `https://${instanceUrl}/`;
   let resultUrl = "";
   switch (type) {
@@ -127,7 +127,7 @@ function convertToKbinUrl(input: string, type: "mention" | "url") {
 function restore_options(): void {
   chrome.storage.sync.get(
     {
-      instance: "kbin.social",
+      instance: "lemmy.world",
     },
     function (items) {
       instanceUrl = items.instance;

@@ -1,5 +1,5 @@
 {
-  "name": "kbin-link",
+  "name": "lemmy-link",
   "version": "1.3.2",
   "description": "Find it annoying to copy paste `!apple@lemmy.ml` to look at that community? This extension is for you.",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/driccio98/kbin-link.git"
+    "url": "git+https://github.com/FackJox/lemmy-link.git"
   },
   "keywords": [],
-  "author": "Daniel Riccio <ricciodaniel98@gmail.com>",
+  "author": "fcuks <jackfox@tuta.io>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/driccio98/kbin-link/issues"
+    "url": "https://github.com/FackJox/lemmy-link/issues"
   },
-  "homepage": "https://github.com/driccio98/kbin-link#readme",
+  "homepage": "https://github.com/FackJox/lemmy-link#readme",
   "devDependencies": {
     "@types/chrome": "^0.0.203",
     "copy-webpack-plugin": "^11.0.0",
