@@ -1,29 +1,29 @@
 {
-  "name": "Kbin Link",
-  "version": "1.3.2",
-  "author": "Daniel Riccio <@lixus98@kbin.social>",
-  "manifest_version": 3,
-  "description": "Extension to make it easy to visit Lemmy communities from kbin.social",
+  "name": "lemmy Link",
+  "version": "1.3.3",
+  "author": "fcuks <@fcuks@mograph.social >",
+  "manifest_version": 4,
+  "description": "Extension to make it easy to interact with different Lemmy communities",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content_script.js"]
+      "js": ["src/content_script.js"]
     }
   ],
   "permissions": ["storage"],
   "options_ui": {
-    "page": "options.html",
+    "page": "public/options.html",
     "open_in_tab": false
   },
   "icons": {
-    "16": "icons/icon16.png",
-    "32": "icons/icon32.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "public/icons/icon16.png",
+    "32": "public/icons/icon32.png",
+    "48": "public/icons/icon48.png",
+    "128": "public/icons/icon128.png"
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "lixus44@protonmail.com"
+      "id": "jackfox@tuta.io"
     }
   }
 }
