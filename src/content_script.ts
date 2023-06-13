@@ -113,7 +113,7 @@ function convertToKbinUrl(input: string, type: "mention" | "url") {
     case "url":
       resultUrl = input.replace(
         /https?:\/\/([^/]+)\/c\/(.+)/,
-        `https://${instanceUrl}/m/$2@$1`
+        `https://${instanceUrl}/c/$2@$1`
       );
       break;
   }
