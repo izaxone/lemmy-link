@@ -1,10 +1,10 @@
-# Kbin Linker Extension
+# Lemmy Linker Extension
 
 Find it annoying to copy paste `!memes@beehaw.org` to look at a Lemmy community? This extension is for you.
 
 This extension looks for Lemmy style communities and replaces them to direct you to seeing that community on your kbin instance.
 
-This extension is forked from https://github.com/masrly/mastodon-link, I just made small changes.
+This extension is forked from https://github.com/driccio98/kbin-link which is forked from https://github.com/masrly/mastodon-link, I just made small changes on the small changes
 
 ## Build
 
@@ -18,11 +18,11 @@ This extension is forked from https://github.com/masrly/mastodon-link, I just ma
 - Pending :(
 
 ### Firefox
-- https://addons.mozilla.org/en-US/firefox/addon/kbin-link/
+- tbc
 
 ## Setup
 
-Click on the mastodon link chrome extensions options:
+Click on the lemmy link chrome extensions options:
 
 <img width="317" alt="mastodon-link-options" src="https://user-images.githubusercontent.com/1066212/203490862-0e62fe47-1f74-41b3-99a8-4de640847d8c.png">
 
@@ -32,6 +32,7 @@ Enter your instances hostname and click save:
 
 Find a Lemmy community and enjoy the convenient icon link! 
 
+## to be updated
 ![Image](https://github.com/driccio98/kbin-link/blob/1d0ec18be808b5a7c02ae7cae5c6ec16bee8c98f/.github/images/image1.png)
 
 ## License
