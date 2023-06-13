@@ -32,8 +32,9 @@ Enter your instances hostname and click save:
 
 Find a Lemmy community and enjoy the convenient icon link! 
 
-## to be updated
-![Image](https://github.com/driccio98/kbin-link/blob/1d0ec18be808b5a7c02ae7cae5c6ec16bee8c98f/.github/images/image1.png)
+![Image](lemmy-link-icon.PNG)
+
+![Image](lemmy-link-icon-2.PNG)
 
 ## License
 
