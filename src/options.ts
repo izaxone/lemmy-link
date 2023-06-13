@@ -15,7 +15,7 @@ instanceInput!.addEventListener("input", (event) => {
 function save_options() {
   var instance = (document.getElementById("instance") as HTMLInputElement)!
     .value;
-  browser.storage.sync.set(
+  chrome.storage.sync.set(
     {
       instance: instance,
     },
@@ -35,7 +35,7 @@ function save_options() {
 // @ts-ignore
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
-  browser.storage.sync.get(
+  chrome.storage.sync.get(
     {
       instance: "lemmy.world",
     },

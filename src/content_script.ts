@@ -125,7 +125,7 @@ function convertToLemmyUrl(input: string, type: "mention" | "url") {
 
 // @ts-ignore
 function restore_options(): void {
-  browser.storage.sync.get(
+  chrome.storage.sync.get(
     {
       instance: "lemmy.world",
     },
