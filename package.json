@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FackJox/lemmy-link.git"
+    "url": "git+https://github.com/izaxone/lemmy-link.git"
   },
   "keywords": [],
   "author": "fcuks <jackfox@tuta.io>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FackJox/lemmy-link/issues"
+    "url": "https://github.com/izaxone/lemmy-link/issues"
   },
-  "homepage": "https://github.com/FackJox/lemmy-link#readme",
+  "homepage": "https://github.com/izaxone/lemmy-link#readme",
   "devDependencies": {
     "@types/chrome": "^0.0.203",
     "copy-webpack-plugin": "^11.0.0",
