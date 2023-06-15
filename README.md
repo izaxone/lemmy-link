@@ -18,7 +18,7 @@ This extension is forked from https://github.com/driccio98/kbin-link which is fo
 - Pending
 
 ### Firefox
-- Pending
+[- Pending](https://addons.mozilla.org/en-GB/firefox/addon/lemmy-link/)
 
 ## Setup
 
