@@ -4,21 +4,13 @@ Find it annoying to copy paste `!memes@beehaw.org` to look at a Lemmy community?
 
 This extension looks for Lemmy style communities and replaces them to direct you to seeing that community on your lemmy instance.
 
-This extension is forked from https://github.com/driccio98/kbin-link which is forked from https://github.com/masrly/mastodon-link, I just made small changes on the small changes
+This extension is forked from https://github.com/FackJox/lemmy-link/fork, which is forked from https://github.com/driccio98/kbin-link, which is forked from https://github.com/masrly/mastodon-link. I made a small edit to change the icon
 
 ## Build
 
 - `npm install`
 - `npm run build`
 - You can then load the extension from the `dist` directory
-
-## Installation
-
-### Chrome
-- Pending
-
-### Firefox
-https://addons.mozilla.org/en-GB/firefox/addon/lemmy-link/
 
 ## Setup
 
