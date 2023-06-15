@@ -3,7 +3,7 @@ const instanceInput = document.getElementById("instance") as HTMLInputElement;
 instanceInput!.addEventListener("input", (event) => {
   if (instanceInput.validity.patternMismatch) {
     instanceInput.setCustomValidity(
-      "Please enter your instance's hostname e.g. lemmy.world"
+      "Please enter your instance's hostname e.g. pawb.social"
     );
     instanceInput.reportValidity();
   } else {
@@ -37,7 +37,7 @@ function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get(
     {
-      instance: "lemmy.world",
+      instance: "pawb.social",
     },
     function (items) {
       (document.getElementById("instance") as HTMLInputElement).value =
